@@ -56,6 +56,12 @@ new Vue({
         }
     }),
 
+    methods: {
+        margenUtilidad(utilidad, ventas) {
+            return utilidad / ventas;
+        }
+    },
+
     computed: {
         computedFirstYear() {
             let ER = this.firstYear.ER;
@@ -82,6 +88,9 @@ new Vue({
                     UAR,
                     UDR,
                     utilidadADistribuir
+                },
+                balanceGral: {
+
                 }
             }
         },
