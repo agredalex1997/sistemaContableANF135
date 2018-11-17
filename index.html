@@ -159,10 +159,18 @@
                             <td>{{ computedSecondYear.ER.utilidadADistribuir }}</td>
                             <td>{{ computedFirstYear.ER.utilidadADistribuir - computedSecondYear.ER.utilidadADistribuir }}</td>
                         </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                                    <th>Acciones comunes en circulacion</th>
+                                    <td><input type="number" v-model="firstYear.acciones"></td>
+                                    <td><input type="number" v-model="secondYear.acciones"></td>
+                                </tr>
                     </tbody>
                 </table>
                     </div>
-                        <div class="col-sm-2">
+                        <div class="col-6">
                             <br>
                             <div class="card text-white bg-primary">
                                     <div class="card-body">
@@ -187,8 +195,16 @@
                                             <p class="card-text">{{ margenUtilidad(computedFirstYear.ER.utilidadADistribuir, computedFirstYear.ER.ventasNetas) }}</p>
                                           </div>
                             </div>
+                            <br>
+                            <div class="card text-white bg-primary">
+                                    <div class="card-body">
+                                            <h5 class="card-title">Ganancias por accion {{ firstYear.year }}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6
+                                            <p class="card-text">{{ computedFirstYear.ER.utilidadADistribuir / firstYear.acciones }}</p>
+                                          </div>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-6">
                             <br>
                                 <div class="card text-white bg-primary">
                                         <div class="card-body">
@@ -211,6 +227,14 @@
                                             <h5 class="card-title">Margen de utilidad neta {{ secondYear.year }}</h5>
                                             <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6
                                             <p class="card-text">{{ margenUtilidad(computedSecondYear.ER.utilidadADistribuir, computedSecondYear.ER.ventasNetas) }}</p>
+                                          </div>
+                            </div>
+                            <br>
+                            <div class="card text-white bg-primary">
+                                    <div class="card-body">
+                                            <h5 class="card-title">Ganancias por accion {{ secondYear.year }}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6
+                                            <p class="card-text">{{ computedSecondYear.ER.utilidadADistribuir / secondYear.acciones }}</p>
                                           </div>
                             </div>
                         </div>

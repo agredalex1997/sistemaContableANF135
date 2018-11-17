@@ -5,6 +5,8 @@ new Vue({
     data: () => ({
         firstYear: {
             year: 2017,
+            acciones: 0,
+
             ER: {
                 ventasTotales: 0,
                 rebajasVentas: 0,
@@ -31,6 +33,8 @@ new Vue({
 
         secondYear: {
             year: 2018,
+            acciones: 0,
+
             ER: {
                 ventasTotales: 0,
                 rebajasVentas: 0,
