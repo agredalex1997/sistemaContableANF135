@@ -23,12 +23,13 @@
                 <a class="nav-link" data-toggle="tab" href="#razonesfinancieras">Razones financieras</a>
               </li>
             </ul>
-          
+
             <!-- Tab panes -->
             <div class="tab-content">
               <div id="balancegral" class="container tab-pane active">
                 <div class="row">
                   <div class="col-12">
+                    <br>
                     <table class="table-dark table-sm table-hover" style="width: 100%;">
                       <thead style="text-align: center;">
                         <tr>
@@ -111,6 +112,51 @@
                           <td><input type="number" v-model="firstYear.balanceGral.otrosActivosPermanentes"></td>
                           <td><input type="number" v-model="secondYear.balanceGral.otrosActivosPermanentes"></td>
                         </tr>
+                        <tr>
+                          <th>Total pasivos corrientes</th>
+                          <td>{{ computedFirstYear.balanceGral.totalPasivosCorrientes }}</td>
+                          <td>{{ computedSecondYear.balanceGral.totalPasivosCorrientes }}</td>
+                        </tr>
+                        <tr>
+                          <th>Cuentas por pagar</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.cuentasPorPagar"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.cuentasPorPagar"></td>
+                        </tr>
+                        <tr>
+                          <th>Documentos por pagar</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.documentosPorPagar"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.documentosPorPagar"></td>
+                        </tr>
+                        <tr>
+                          <th>Deudas con entidades de credito y obligaciones u otros valores negociables</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.deudasEntidadesCredito"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.deudasEntidadesCredito"></td>
+                        </tr>
+                        <tr>
+                          <th>Otras cuentas por pagar</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.otrasCuentasPorPagar"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.otrasCuentasPorPagar"></td>
+                        </tr>
+                        <tr>
+                          <th>Total pasivo</th>
+                          <td>{{ computedFirstYear.balanceGral.totalPasivos }}</td>
+                          <td>{{ computedSecondYear.balanceGral.totalPasivos }}</td>
+                        </tr>
+                        <tr>
+                          <th>Deuda a largo plazo</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.deudaLargoPlazo"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.deudaLargoPlazo"></td>
+                        </tr>
+                        <tr>
+                          <th>Impuesto diferido a las ganancias</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.impuestoDiferidoGanancias"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.impuestoDiferidoGanancias"></td>
+                        </tr>
+                        <tr>
+                          <th>Otros pasivos</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.otrosPasivos"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.otrosPasivos"></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -131,7 +177,7 @@
                             <th>{{ secondYear.year }}</th>
                           </tr>
                           <tr>
-                  
+
                           </tr>
                         </thead>
                         <tbody>
@@ -356,7 +402,7 @@
               </div>
             </div>
           </div>
-    </script>
+  </script>
   <script src="js/vue.js"></script>
   <script src="js/app.js"></script>
 </body>
