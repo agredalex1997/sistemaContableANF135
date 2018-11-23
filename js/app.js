@@ -27,6 +27,17 @@ new Vue({
             },
 
             balanceGral: {
+                efectivo: 7982,
+                efectivoYEquivalentes: 12307,
+                inversionesCortoPlazo: 53892,
+                cuentasPorCobrar: 35673,
+                inventarios: 4855,
+                otrosActivosCorrientes: 13936,
+
+                inmueblesMobiliarioYEquipo: 75076,
+                depreciacionAcumuladaInmueblesMobiliarioYEquipo: 41293,
+                inversionesPermanentes: 194714,
+                otrosActivosPermanentes: 18177,
 
             }
         },
@@ -54,9 +65,7 @@ new Vue({
                 otrosGastos: 0
             },
 
-            balanceGral: {
-
-            }
+            balanceGral: {}
         }
     }),
 
@@ -68,11 +77,59 @@ new Vue({
 
     computed: {
         computedFirstYear() {
+            //calculos de estado de resultados
             let ER = this.firstYear.ER;
+
+            let ventasNetas =
+                ER.ventasTotales - ER.rebajasVentas - ER.devolucionVentas;
+            let comprasNetas =
+                ER.comprasTotales - ER.devolucionCompras - ER.rebajasCompras;
+            let mercaderiaDisponible = comprasNetas + parseInt(ER.inventarioInicial);
+            let costosVentas = mercaderiaDisponible - ER.inventarioFinal;
+            let utilidadBruta = ventasNetas - costosVentas;
+            let utilidadOperativa = utilidadBruta - ER.gastosOperativos;
+            let UAR = utilidadOperativa - ER.otrosGastos + parseInt(ER.otrosIngresos);
+            let UDR = UAR - ER.reservaLegal;
+            let utilidadADistribuir = UDR - ER.renta;
+
+            //calculos de balance general
             let balanceGral = this.firstYear.balanceGral;
 
-            let ventasNetas = ER.ventasTotales - ER.rebajasVentas - ER.devolucionVentas;
-            let comprasNetas = ER.comprasTotales - ER.devolucionCompras - ER.rebajasCompras;
+            let efectivoEInversionesCortoPlazo = parseInt(balanceGral.efectivo) + parseInt(balanceGral.efectivoYEquivalentes) + parseInt(balanceGral.inversionesCortoPlazo);
+            let totalActivosCorrientes = parseInt(balanceGral.cuentasPorCobrar) + parseInt(balanceGral.inventarios) + parseInt(balanceGral.otrosActivosCorrientes) + parseInt(efectivoEInversionesCortoPlazo);
+            let inmueblesMobiliarioYEquipoNeto = balanceGral.inmueblesMobiliarioYEquipo - balanceGral.depreciacionAcumuladaInmueblesMobiliarioYEquipo;
+            let totalActivos = parseInt(totalActivosCorrientes) + parseInt(inmueblesMobiliarioYEquipoNeto) + parseInt(balanceGral.inversionesPermanentes) + parseInt(balanceGral.otrosActivosPermanentes);
+
+            return {
+                ER: {
+                    ventasNetas,
+                    comprasNetas,
+                    mercaderiaDisponible,
+                    costosVentas,
+                    utilidadBruta,
+                    utilidadOperativa,
+                    UAR,
+                    UDR,
+                    utilidadADistribuir
+                },
+
+                balanceGral: {
+                    efectivoEInversionesCortoPlazo,
+                    totalActivosCorrientes,
+                    inmueblesMobiliarioYEquipoNeto,
+                    totalActivos,
+                }
+            };
+        },
+
+        computedSecondYear() {
+            let ER = this.secondYear.ER;
+            let balanceGral = this.secondYear.balanceGral;
+
+            let ventasNetas =
+                ER.ventasTotales - ER.rebajasVentas - ER.devolucionVentas;
+            let comprasNetas =
+                ER.comprasTotales - ER.devolucionCompras - ER.rebajasCompras;
             let mercaderiaDisponible = comprasNetas + parseInt(ER.inventarioInicial);
             let costosVentas = mercaderiaDisponible - ER.inventarioFinal;
             let utilidadBruta = ventasNetas - costosVentas;
@@ -93,39 +150,11 @@ new Vue({
                     UDR,
                     utilidadADistribuir
                 },
+
                 balanceGral: {
 
                 }
-            }
-        },
-
-        computedSecondYear() {
-            let ER = this.secondYear.ER;
-            let balanceGral = this.secondYear.balanceGral;
-
-            let ventasNetas = ER.ventasTotales - ER.rebajasVentas - ER.devolucionVentas;
-            let comprasNetas = ER.comprasTotales - ER.devolucionCompras - ER.rebajasCompras;
-            let mercaderiaDisponible = comprasNetas + parseInt(ER.inventarioInicial);
-            let costosVentas = mercaderiaDisponible - ER.inventarioFinal;
-            let utilidadBruta = ventasNetas - costosVentas;
-            let utilidadOperativa = utilidadBruta - ER.gastosOperativos;
-            let UAR = utilidadOperativa - ER.otrosGastos + parseInt(ER.otrosIngresos);
-            let UDR = UAR - ER.reservaLegal;
-            let utilidadADistribuir = UDR - ER.renta;
-
-            return {
-                ER: {
-                    ventasNetas,
-                    comprasNetas,
-                    mercaderiaDisponible,
-                    costosVentas,
-                    utilidadBruta,
-                    utilidadOperativa,
-                    UAR,
-                    UDR,
-                    utilidadADistribuir
-                }
-            }
+            };
         }
     }
 });
