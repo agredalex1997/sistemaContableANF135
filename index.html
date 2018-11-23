@@ -1,246 +1,274 @@
 <head>
-  <title>ANF135 | Sistema contable</title>
-  <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" href="css/main.css" />
+    <title>ANF135 | Sistema contable</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <div id="app"></div>
-  <script type="text/x-template" id="app-template">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <br>
-                <table class="table table-dark table-sm table-hover">
-                    <thead style="text-align: center;">
-                        <tr>
+    <div id="app"></div>
+    <script type="text/x-template" id="app-template">
+        <div class="container">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#balancegral">Balance General</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#er">Estado de resultados</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#razonesfinancieras">Razones financieras</a>
+              </li>
+            </ul>
+          
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div id="balancegral" class="container tab-pane active"><br>
+              </div>
+              <div id="er" class="container tab-pane fade"><br>
+                <div class="row">
+                    <div class="col-12">
+                      <table class="table table-dark table-sm table-hover">
+                        <thead style="text-align: center;">
+                          <tr>
                             <th rowspan="2">CONCEPTO</th>
                             <th colspan="2">YEARS</th>
                             <th rowspan="2">ANALISIS HORIZONTAL</th>
-                        </tr>
-                        <tr>
-                                <th>{{ firstYear.year }}</th>
-                                <th>{{ secondYear.year }}</th>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+                          </tr>
+                          <tr>
+                            <th>{{ firstYear.year }}</th>
+                            <th>{{ secondYear.year }}</th>
+                          </tr>
+                          <tr>
+                  
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
                             <th>Ventas totales</th>
                             <td><input type="number" v-model="firstYear.ER.ventasTotales"></td>
                             <td><input type="number" v-model="secondYear.ER.ventasTotales"></td>
                             <td>{{ firstYear.ER.ventasTotales - secondYear.ER.ventasTotales }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Rebajas en ventas</th>
                             <td><input type="number" v-model="firstYear.ER.rebajasVentas"></td>
                             <td><input type="number" v-model="secondYear.ER.rebajasVentas"></td>
                             <td>{{ firstYear.ER.rebajasVentas - secondYear.ER.rebajasVentas }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Devoluciones en ventas</th>
                             <td><input type="number" v-model="firstYear.ER.devolucionVentas"></td>
                             <td><input type="number" v-model="secondYear.ER.devolucionVentas"></td>
                             <td>{{ firstYear.ER.devolucionVentas - secondYear.ER.devolucionVentas }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Ventas netas</th>
                             <td>{{ computedFirstYear.ER.ventasNetas }}</td>
                             <td>{{ computedSecondYear.ER.ventasNetas }}</td>
                             <td>{{ computedFirstYear.ER.ventasNetas - computedSecondYear.ER.ventasNetas }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Compras totales</th>
                             <td><input type="number" v-model="firstYear.ER.comprasTotales"></td>
                             <td><input type="number" v-model="secondYear.ER.comprasTotales"></td>
                             <td>{{ firstYear.ER.comprasTotales - secondYear.ER.comprasTotales }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Rebajas en compras</th>
                             <td><input type="number" v-model="firstYear.ER.rebajasCompras"></td>
                             <td><input type="number" v-model="secondYear.ER.rebajasCompras"></td>
                             <td>{{ firstYear.ER.rebajasCompras - secondYear.ER.rebajasCompras }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Devoluciones en compras</th>
                             <td><input type="number" v-model="firstYear.ER.devolucionCompras"></td>
                             <td><input type="number" v-model="secondYear.ER.devolucionCompras"></td>
                             <td>{{ firstYear.ER.devolucionCompras - secondYear.ER.devolucionCompras }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Compras netas</th>
                             <td>{{ computedFirstYear.ER.comprasNetas }}</td>
                             <td>{{ computedSecondYear.ER.comprasNetas }}</td>
                             <td>{{ computedFirstYear.ER.comprasNetas - computedSecondYear.ER.comprasNetas }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Inventario inicial</th>
                             <td><input type="number" v-model="firstYear.ER.inventarioInicial"></td>
                             <td><input type="number" v-model="secondYear.ER.inventarioInicial"></td>
                             <td>{{ firstYear.ER.inventarioInicial - secondYear.ER.inventarioInicial }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Mercaderia disponible</th>
                             <td>{{ computedFirstYear.ER.mercaderiaDisponible }}</td>
                             <td>{{ computedSecondYear.ER.mercaderiaDisponible }}</td>
-                            <td>{{ computedFirstYear.ER.mercaderiaDisponible - computedSecondYear.ER.mercaderiaDisponible }}</td>
-                        </tr>
-                        <tr>
+                            <td>{{ computedFirstYear.ER.mercaderiaDisponible -
+                              computedSecondYear.ER.mercaderiaDisponible }}</td>
+                          </tr>
+                          <tr>
                             <th>Inventario final</th>
                             <td><input type="number" v-model="firstYear.ER.inventarioFinal"></td>
                             <td><input type="number" v-model="secondYear.ER.inventarioFinal"></td>
                             <td>{{ firstYear.ER.inventarioFinal - secondYear.ER.inventarioFinal }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Costos de ventas</th>
                             <td>{{ computedFirstYear.ER.costosVentas }}</td>
                             <td>{{ computedSecondYear.ER.costosVentas }}</td>
                             <td>{{ computedFirstYear.ER.costosVentas - computedSecondYear.ER.costosVentas }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Utilidad bruta</th>
                             <td>{{ computedFirstYear.ER.utilidadBruta }}</td>
                             <td>{{ computedSecondYear.ER.utilidadBruta }}</td>
                             <td>{{ computedFirstYear.ER.utilidadBruta - computedSecondYear.ER.utilidadBruta }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Gastos operativos</th>
                             <td><input type="number" v-model="firstYear.ER.gastosOperativos"></td>
                             <td><input type="number" v-model="secondYear.ER.gastosOperativos"></td>
                             <td>{{ firstYear.ER.gastosOperativos - secondYear.ER.gastosOperativos }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Utilidad operativa</th>
                             <td>{{ computedFirstYear.ER.utilidadOperativa }}</td>
                             <td>{{ computedSecondYear.ER.utilidadOperativa }}</td>
                             <td>{{ computedFirstYear.ER.utilidadOperativa - computedSecondYear.ER.utilidadOperativa }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Otros gastos</th>
                             <td><input type="number" v-model="firstYear.ER.otrosGastos"></td>
                             <td><input type="number" v-model="secondYear.ER.otrosGastos"></td>
                             <td>{{ firstYear.ER.otrosGastos - secondYear.ER.otrosGastos }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Otros ingresos</th>
                             <td><input type="number" v-model="firstYear.ER.otrosIngresos"></td>
                             <td><input type="number" v-model="secondYear.ER.otrosIngresos"></td>
                             <td>{{ firstYear.ER.otrosIngresos - secondYear.ER.otrosIngresos }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Utilidad antes de reserva (UAR)</th>
                             <td>{{ computedFirstYear.ER.UAR }}</td>
                             <td>{{ computedSecondYear.ER.UAR }}</td>
                             <td>{{ computedFirstYear.ER.UAR - computedSecondYear.ER.UAR }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Reserva legal</th>
                             <td><input type="number" v-model="firstYear.ER.reservaLegal"></td>
                             <td><input type="number" v-model="secondYear.ER.reservaLegal"></td>
                             <td>{{ firstYear.ER.reservaLegal - secondYear.ER.reservaLegal }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Utilidad despues de reserva</th>
                             <td>{{ computedFirstYear.ER.UDR }}</td>
                             <td>{{ computedSecondYear.ER.UDR }}</td>
                             <td>{{ computedFirstYear.ER.UDR - computedSecondYear.ER.UDR }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Impuesto sobre la renta</th>
                             <td><input type="number" v-model="firstYear.ER.renta"></td>
                             <td><input type="number" v-model="secondYear.ER.renta"></td>
                             <td>{{ firstYear.ER.renta - secondYear.ER.renta }}</td>
-                        </tr>
-                        <tr>
+                          </tr>
+                          <tr>
                             <th>Utilidad a distribuir</th>
                             <td>{{ computedFirstYear.ER.utilidadADistribuir }}</td>
                             <td>{{ computedSecondYear.ER.utilidadADistribuir }}</td>
-                            <td>{{ computedFirstYear.ER.utilidadADistribuir - computedSecondYear.ER.utilidadADistribuir }}</td>
-                        </tr>
-                        <tr>
+                            <td>{{ computedFirstYear.ER.utilidadADistribuir - computedSecondYear.ER.utilidadADistribuir
+                              }}</td>
+                          </tr>
+                          <tr>
                             <td colspan="4"></td>
-                            </tr>
-                            <tr>
-                                    <th>Acciones comunes en circulacion</th>
-                                    <td><input type="number" v-model="firstYear.acciones"></td>
-                                    <td><input type="number" v-model="secondYear.acciones"></td>
-                                </tr>
-                    </tbody>
-                </table>
+                          </tr>
+                          <tr>
+                            <th>Acciones comunes en circulacion</th>
+                            <td><input type="number" v-model="firstYear.acciones"></td>
+                            <td><input type="number" v-model="secondYear.acciones"></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                        <div class="col-6">
-                            <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Margen de utilidad bruta {{ firstYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6
-                                            <p class="card-text">{{ margenUtilidad(computedFirstYear.ER.utilidadBruta, computedFirstYear.ER.ventasNetas) }}</p>
-                                          </div>
-                            </div>
-                            <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Margen de utilidad operativa {{ firstYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad operariva / Ventas</h6
-                                            <p class="card-text">{{ margenUtilidad(computedFirstYear.ER.utilidadOperativa, computedFirstYear.ER.ventasNetas) }}</p>
-                                          </div>
-                            </div>
-                            <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Margen de utilidad neta {{ firstYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6
-                                            <p class="card-text">{{ margenUtilidad(computedFirstYear.ER.utilidadADistribuir, computedFirstYear.ER.ventasNetas) }}</p>
-                                          </div>
-                            </div>
-                            <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Ganancias por accion {{ firstYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6
-                                            <p class="card-text">{{ computedFirstYear.ER.utilidadADistribuir / firstYear.acciones }}</p>
-                                          </div>
-                            </div>
+                  </div>
+              </div>
+              <div id="razonesfinancieras" class="container tab-pane fade"><br>
+                <div class="row">
+                    <div class="col-6">
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad bruta {{ firstYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6 <p class="card-text">{{
+                          margenUtilidad(computedFirstYear.ER.utilidadBruta, computedFirstYear.ER.ventasNetas) }}</p>
                         </div>
-                        <div class="col-6">
-                            <br>
-                                <div class="card text-white bg-primary">
-                                        <div class="card-body">
-                                                <h5 class="card-title">Margen de utilidad bruta {{ secondYear.year }}</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6
-                                                <p class="card-text">{{ margenUtilidad(computedSecondYear.ER.utilidadBruta, computedSecondYear.ER.ventasNetas) }}</p>
-                                              </div>
-                                </div>
-                                <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Margen de utilidad operativa {{ secondYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad operativa / Ventas</h6
-                                            <p class="card-text">{{ margenUtilidad(computedSecondYear.ER.utilidadOperativa, computedSecondYear.ER.ventasNetas) }}</p>
-                                          </div>
-                            </div>
-                            <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Margen de utilidad neta {{ secondYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6
-                                            <p class="card-text">{{ margenUtilidad(computedSecondYear.ER.utilidadADistribuir, computedSecondYear.ER.ventasNetas) }}</p>
-                                          </div>
-                            </div>
-                            <br>
-                            <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                            <h5 class="card-title">Ganancias por accion {{ secondYear.year }}</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6
-                                            <p class="card-text">{{ computedSecondYear.ER.utilidadADistribuir / secondYear.acciones }}</p>
-                                          </div>
-                            </div>
+                      </div>
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad operativa {{ firstYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad operariva / Ventas</h6 <p class="card-text">{{
+                          margenUtilidad(computedFirstYear.ER.utilidadOperativa, computedFirstYear.ER.ventasNetas) }}</p>
                         </div>
+                      </div>
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad neta {{ firstYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6 <p class="card-text">{{
+                          margenUtilidad(computedFirstYear.ER.utilidadADistribuir, computedFirstYear.ER.ventasNetas) }}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Ganancias por accion {{ firstYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6 <p class="card-text">{{
+                          computedFirstYear.ER.utilidadADistribuir / firstYear.acciones }}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad bruta {{ secondYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6 <p class="card-text">{{
+                          margenUtilidad(computedSecondYear.ER.utilidadBruta, computedSecondYear.ER.ventasNetas) }}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad operativa {{ secondYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad operativa / Ventas</h6 <p class="card-text">{{
+                          margenUtilidad(computedSecondYear.ER.utilidadOperativa, computedSecondYear.ER.ventasNetas) }}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad neta {{ secondYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6 <p class="card-text">{{
+                          margenUtilidad(computedSecondYear.ER.utilidadADistribuir, computedSecondYear.ER.ventasNetas) }}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Ganancias por accion {{ secondYear.year }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6 <p class="card-text">{{
+                          computedSecondYear.ER.utilidadADistribuir / secondYear.acciones }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
             </div>
-        </div>
-  </script>
-  <script src="js/vue.js"></script>
-  <script src="js/app.js"></script>
+          </div>
+    </script>
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
 </body>
