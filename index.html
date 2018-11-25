@@ -157,6 +157,31 @@
                           <td><input type="number" v-model="firstYear.balanceGral.otrosPasivos"></td>
                           <td><input type="number" v-model="secondYear.balanceGral.otrosPasivos"></td>
                         </tr>
+                        <tr>
+                          <th>Capital contable</th>
+                          <td>{{ computedFirstYear.balanceGral.capitalContable }}</td>
+                          <td>{{ computedSecondYear.balanceGral.capitalContable }}</td>
+                        </tr>
+                        <tr>
+                          <th>Acciones comunes</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.accionesComunes"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.accionesComunes"></td>
+                        </tr>
+                        <tr>
+                          <th>Resultado de ejercicios anteriores</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.resultadoEjercicioAnterior"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.resultadoEjercicioAnterior"></td>
+                        </tr>
+                        <tr>
+                          <th>Ganancia no realizada</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.gananciaNoRealizada"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.gananciaNoRealizada"></td>
+                        </tr>
+                        <tr>
+                          <th>Otras participaciones</th>
+                          <td><input type="number" v-model="firstYear.balanceGral.otrasParticipaciones"></td>
+                          <td><input type="number" v-model="secondYear.balanceGral.otrasParticipaciones"></td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
