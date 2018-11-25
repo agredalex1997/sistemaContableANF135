@@ -182,6 +182,11 @@
                           <td><input type="number" v-model="firstYear.balanceGral.otrasParticipaciones"></td>
                           <td><input type="number" v-model="secondYear.balanceGral.otrasParticipaciones"></td>
                         </tr>
+                        <tr>
+                          <th>Total pasivo y capital contable</th>
+                          <td>{{ computedFirstYear.balanceGral.totalPasivoCapitalContable }}</td>
+                          <td>{{ computedSecondYear.balanceGral.totalPasivoCapitalContable }}</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -207,146 +212,64 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <th>Ventas totales</th>
-                            <td><input type="number" v-model="firstYear.ER.ventasTotales"></td>
-                            <td><input type="number" v-model="secondYear.ER.ventasTotales"></td>
-                            <td>{{ firstYear.ER.ventasTotales - secondYear.ER.ventasTotales }}</td>
+                            <th>Ingresos</th>
+                            <td><input type="number" v-model="firstYear.ER.ingresos"></td>
+                            <td><input type="number" v-model="secondYear.ER.ingresos"></td>
                           </tr>
                           <tr>
-                            <th>Rebajas en ventas</th>
-                            <td><input type="number" v-model="firstYear.ER.rebajasVentas"></td>
-                            <td><input type="number" v-model="secondYear.ER.rebajasVentas"></td>
-                            <td>{{ firstYear.ER.rebajasVentas - secondYear.ER.rebajasVentas }}</td>
+                            <th>Consumos y otros gastos externos</th>
+                            <td><input type="number" v-model="firstYear.ER.consumosGastosExternos"></td>
+                            <td><input type="number" v-model="secondYear.ER.consumosGastosExternos"></td>
                           </tr>
                           <tr>
-                            <th>Devoluciones en ventas</th>
-                            <td><input type="number" v-model="firstYear.ER.devolucionVentas"></td>
-                            <td><input type="number" v-model="secondYear.ER.devolucionVentas"></td>
-                            <td>{{ firstYear.ER.devolucionVentas - secondYear.ER.devolucionVentas }}</td>
+                            <th>Beneficio bruto</th>
+                            <td>{{ computedFirstYear.ER.beneficioBruto }}</td>
+                            <td>{{ computedSecondYear.ER.beneficioBruto }}</td>
                           </tr>
                           <tr>
-                            <th>Ventas netas</th>
-                            <td>{{ computedFirstYear.ER.ventasNetas }}</td>
-                            <td>{{ computedSecondYear.ER.ventasNetas }}</td>
-                            <td>{{ computedFirstYear.ER.ventasNetas - computedSecondYear.ER.ventasNetas }}</td>
+                            <th>Total gastos de explotacion</th>
+                            <td>{{ computedFirstYear.ER.gastosExplotacion }}</td>
+                            <td>{{ computedSecondYear.ER.gastosExplotacion }}</td>
                           </tr>
                           <tr>
-                            <th>Compras totales</th>
-                            <td><input type="number" v-model="firstYear.ER.comprasTotales"></td>
-                            <td><input type="number" v-model="secondYear.ER.comprasTotales"></td>
-                            <td>{{ firstYear.ER.comprasTotales - secondYear.ER.comprasTotales }}</td>
+                            <th>Gastos de personal</th>
+                            <td><input type="number" v-model="firstYear.ER.gastosPersonal"></td>
+                            <td><input type="number" v-model="secondYear.ER.gastosPersonal"></td>
                           </tr>
                           <tr>
-                            <th>Rebajas en compras</th>
-                            <td><input type="number" v-model="firstYear.ER.rebajasCompras"></td>
-                            <td><input type="number" v-model="secondYear.ER.rebajasCompras"></td>
-                            <td>{{ firstYear.ER.rebajasCompras - secondYear.ER.rebajasCompras }}</td>
+                            <th>I + D</th>
+                            <td><input type="number" v-model="firstYear.ER.investigacionDev"></td>
+                            <td><input type="number" v-model="secondYear.ER.investigacionDev"></td>
                           </tr>
                           <tr>
-                            <th>Devoluciones en compras</th>
-                            <td><input type="number" v-model="firstYear.ER.devolucionCompras"></td>
-                            <td><input type="number" v-model="secondYear.ER.devolucionCompras"></td>
-                            <td>{{ firstYear.ER.devolucionCompras - secondYear.ER.devolucionCompras }}</td>
+                            <th>Resultados de explotacion</th>
+                            <td>{{ computedFirstYear.ER.resultadoExplotacion }}</td>
+                            <td>{{ computedSecondYear.ER.resultadoExplotacion }}</td>
                           </tr>
                           <tr>
-                            <th>Compras netas</th>
-                            <td>{{ computedFirstYear.ER.comprasNetas }}</td>
-                            <td>{{ computedSecondYear.ER.comprasNetas }}</td>
-                            <td>{{ computedFirstYear.ER.comprasNetas - computedSecondYear.ER.comprasNetas }}</td>
-                          </tr>
-                          <tr>
-                            <th>Inventario inicial</th>
-                            <td><input type="number" v-model="firstYear.ER.inventarioInicial"></td>
-                            <td><input type="number" v-model="secondYear.ER.inventarioInicial"></td>
-                            <td>{{ firstYear.ER.inventarioInicial - secondYear.ER.inventarioInicial }}</td>
-                          </tr>
-                          <tr>
-                            <th>Mercaderia disponible</th>
-                            <td>{{ computedFirstYear.ER.mercaderiaDisponible }}</td>
-                            <td>{{ computedSecondYear.ER.mercaderiaDisponible }}</td>
-                            <td>{{ computedFirstYear.ER.mercaderiaDisponible -
-                              computedSecondYear.ER.mercaderiaDisponible }}</td>
-                          </tr>
-                          <tr>
-                            <th>Inventario final</th>
-                            <td><input type="number" v-model="firstYear.ER.inventarioFinal"></td>
-                            <td><input type="number" v-model="secondYear.ER.inventarioFinal"></td>
-                            <td>{{ firstYear.ER.inventarioFinal - secondYear.ER.inventarioFinal }}</td>
-                          </tr>
-                          <tr>
-                            <th>Costos de ventas</th>
-                            <td>{{ computedFirstYear.ER.costosVentas }}</td>
-                            <td>{{ computedSecondYear.ER.costosVentas }}</td>
-                            <td>{{ computedFirstYear.ER.costosVentas - computedSecondYear.ER.costosVentas }}</td>
-                          </tr>
-                          <tr>
-                            <th>Utilidad bruta</th>
-                            <td>{{ computedFirstYear.ER.utilidadBruta }}</td>
-                            <td>{{ computedSecondYear.ER.utilidadBruta }}</td>
-                            <td>{{ computedFirstYear.ER.utilidadBruta - computedSecondYear.ER.utilidadBruta }}</td>
-                          </tr>
-                          <tr>
-                            <th>Gastos operativos</th>
-                            <td><input type="number" v-model="firstYear.ER.gastosOperativos"></td>
-                            <td><input type="number" v-model="secondYear.ER.gastosOperativos"></td>
-                            <td>{{ firstYear.ER.gastosOperativos - secondYear.ER.gastosOperativos }}</td>
-                          </tr>
-                          <tr>
-                            <th>Utilidad operativa</th>
-                            <td>{{ computedFirstYear.ER.utilidadOperativa }}</td>
-                            <td>{{ computedSecondYear.ER.utilidadOperativa }}</td>
-                            <td>{{ computedFirstYear.ER.utilidadOperativa - computedSecondYear.ER.utilidadOperativa }}</td>
+                            <th>Ingresos financieros</th>
+                            <td><input type="number" v-model="firstYear.ER.ingresosFinancieros"></td>
+                            <td><input type="number" v-model="secondYear.ER.ingresosFinancieros"></td>
                           </tr>
                           <tr>
                             <th>Otros gastos</th>
                             <td><input type="number" v-model="firstYear.ER.otrosGastos"></td>
                             <td><input type="number" v-model="secondYear.ER.otrosGastos"></td>
-                            <td>{{ firstYear.ER.otrosGastos - secondYear.ER.otrosGastos }}</td>
                           </tr>
                           <tr>
-                            <th>Otros ingresos</th>
-                            <td><input type="number" v-model="firstYear.ER.otrosIngresos"></td>
-                            <td><input type="number" v-model="secondYear.ER.otrosIngresos"></td>
-                            <td>{{ firstYear.ER.otrosIngresos - secondYear.ER.otrosIngresos }}</td>
+                            <th>Resultados ordinario antes de impuestos</th>
+                            <td>{{ computedFirstYear.ER.resultadoOrdinarioAntesImpuestos }}</td>
+                            <td>{{ computedSecondYear.ER.resultadoOrdinarioAntesImpuestos }}</td>
                           </tr>
                           <tr>
-                            <th>Utilidad antes de reserva (UAR)</th>
-                            <td>{{ computedFirstYear.ER.UAR }}</td>
-                            <td>{{ computedSecondYear.ER.UAR }}</td>
-                            <td>{{ computedFirstYear.ER.UAR - computedSecondYear.ER.UAR }}</td>
+                            <th>Impuesto sobre beneficios</th>
+                            <td><input type="number" v-model="firstYear.ER.impuestoBeneficios"></td>
+                            <td><input type="number" v-model="secondYear.ER.impuestoBeneficios"></td>
                           </tr>
                           <tr>
-                            <th>Reserva legal</th>
-                            <td><input type="number" v-model="firstYear.ER.reservaLegal"></td>
-                            <td><input type="number" v-model="secondYear.ER.reservaLegal"></td>
-                            <td>{{ firstYear.ER.reservaLegal - secondYear.ER.reservaLegal }}</td>
-                          </tr>
-                          <tr>
-                            <th>Utilidad despues de reserva</th>
-                            <td>{{ computedFirstYear.ER.UDR }}</td>
-                            <td>{{ computedSecondYear.ER.UDR }}</td>
-                            <td>{{ computedFirstYear.ER.UDR - computedSecondYear.ER.UDR }}</td>
-                          </tr>
-                          <tr>
-                            <th>Impuesto sobre la renta</th>
-                            <td><input type="number" v-model="firstYear.ER.renta"></td>
-                            <td><input type="number" v-model="secondYear.ER.renta"></td>
-                            <td>{{ firstYear.ER.renta - secondYear.ER.renta }}</td>
-                          </tr>
-                          <tr>
-                            <th>Utilidad a distribuir</th>
-                            <td>{{ computedFirstYear.ER.utilidadADistribuir }}</td>
-                            <td>{{ computedSecondYear.ER.utilidadADistribuir }}</td>
-                            <td>{{ computedFirstYear.ER.utilidadADistribuir - computedSecondYear.ER.utilidadADistribuir
-                              }}</td>
-                          </tr>
-                          <tr>
-                            <td colspan="4"></td>
-                          </tr>
-                          <tr>
-                            <th>Acciones comunes en circulacion</th>
-                            <td><input type="number" v-model="firstYear.acciones"></td>
-                            <td><input type="number" v-model="secondYear.acciones"></td>
+                            <th>Resultado ejercicio procedente de operaciones continuadas</th>
+                            <td>{{ computedFirstYear.ER.resultadoEjercicioOperacionesContinuadas }}</td>
+                            <td>{{ computedSecondYear.ER.resultadoEjercicioOperacionesContinuadas }}</td>
                           </tr>
                         </tbody>
                       </table>

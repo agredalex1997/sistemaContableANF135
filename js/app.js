@@ -8,22 +8,16 @@ new Vue({
       acciones: 0,
 
       ER: {
-        ventasTotales: 0,
-        rebajasVentas: 0,
-        devolucionVentas: 0,
-        comprasTotales: 0,
-        devolucionCompras: 0,
-        rebajasCompras: 0,
-        inventarioInicial: 0,
-        inventarioFinal: 0,
+        ingresos: 229234,
+        consumosGastosExternos: 141048,
 
-        //estos podrian convertirse en una propiedad computada
-        gastosOperativos: 0,
-        reservaLegal: 0,
-        renta: 0,
+        gastosPersonal: 15261,
+        investigacionDev: 11581,
 
-        otrosIngresos: 0,
-        otrosGastos: 0
+        ingresosFinancieros: 2878,
+        otrosGastos: 133,
+
+        impuestoBeneficios: 15738
       },
 
       balanceGral: {
@@ -59,24 +53,7 @@ new Vue({
       year: 2018,
       acciones: 0,
 
-      ER: {
-        ventasTotales: 0,
-        rebajasVentas: 0,
-        devolucionVentas: 0,
-        comprasTotales: 0,
-        devolucionCompras: 0,
-        rebajasCompras: 0,
-        inventarioInicial: 0,
-        inventarioFinal: 0,
-
-        //estos podrian convertirse en una propiedad computada
-        gastosOperativos: 0,
-        reservaLegal: 0,
-        renta: 0,
-
-        otrosIngresos: 0,
-        otrosGastos: 0
-      },
+      ER: {},
 
       balanceGral: {
         efectivo: 11575,
@@ -119,17 +96,18 @@ new Vue({
       //calculos de estado de resultados
       let ER = this.firstYear.ER;
 
-      let ventasNetas =
-        ER.ventasTotales - ER.rebajasVentas - ER.devolucionVentas;
-      let comprasNetas =
-        ER.comprasTotales - ER.devolucionCompras - ER.rebajasCompras;
-      let mercaderiaDisponible = comprasNetas + parseInt(ER.inventarioInicial);
-      let costosVentas = mercaderiaDisponible - ER.inventarioFinal;
-      let utilidadBruta = ventasNetas - costosVentas;
-      let utilidadOperativa = utilidadBruta - ER.gastosOperativos;
-      let UAR = utilidadOperativa - ER.otrosGastos + parseInt(ER.otrosIngresos);
-      let UDR = UAR - ER.reservaLegal;
-      let utilidadADistribuir = UDR - ER.renta;
+      let beneficioBruto = ER.ingresos - ER.consumosGastosExternos;
+      let gastosExplotacion =
+        parseInt(ER.gastosPersonal) +
+        parseInt(ER.investigacionDev) +
+        parseInt(ER.consumosGastosExternos);
+      let resultadoExplotacion = ER.ingresos - gastosExplotacion;
+      let resultadoOrdinarioAntesImpuestos =
+        parseInt(resultadoExplotacion) +
+        parseInt(ER.ingresosFinancieros) -
+        ER.otrosGastos;
+      let resultadoEjercicioOperacionesContinuadas =
+        resultadoOrdinarioAntesImpuestos - ER.impuestoBeneficios;
 
       //calculos de balance general
       let balanceGral = this.firstYear.balanceGral;
@@ -168,18 +146,16 @@ new Vue({
         parseInt(balanceGral.resultadoEjercicioAnterior) +
         parseInt(balanceGral.gananciaNoRealizada) -
         balanceGral.otrasParticipaciones;
+      let totalPasivoCapitalContable =
+        parseInt(totalPasivos) + parseInt(capitalContable);
 
       return {
         ER: {
-          ventasNetas,
-          comprasNetas,
-          mercaderiaDisponible,
-          costosVentas,
-          utilidadBruta,
-          utilidadOperativa,
-          UAR,
-          UDR,
-          utilidadADistribuir
+          beneficioBruto,
+          gastosExplotacion,
+          resultadoExplotacion,
+          resultadoOrdinarioAntesImpuestos,
+          resultadoEjercicioOperacionesContinuadas
         },
 
         balanceGral: {
@@ -248,6 +224,8 @@ new Vue({
         parseInt(balanceGral.resultadoEjercicioAnterior) +
         parseInt(balanceGral.gananciaNoRealizada) -
         balanceGral.otrasParticipaciones;
+      let totalPasivoCapitalContable =
+        parseInt(totalPasivos) + parseInt(capitalContable);
 
       return {
         ER: {
