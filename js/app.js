@@ -3,7 +3,7 @@ new Vue({
   template: `#app-template`,
 
   data: () => ({
-    firstYear: {
+    year1: {
       year: 2017,
 
       ER: {
@@ -51,7 +51,7 @@ new Vue({
       }
     },
 
-    secondYear: {
+    year2: {
       year: 2018,
 
       ER: {
@@ -103,13 +103,17 @@ new Vue({
   methods: {
     margenUtilidad(utilidad, ventas) {
       return utilidad / ventas;
+    },
+
+    analisisVertical(fraccion, total) {
+      return (fraccion / total * 100).toFixed(2);
     }
   },
 
   computed: {
-    computedFirstYear() {
+    computedYear1() {
       //calculos de estado de resultados
-      let ER = this.firstYear.ER;
+      let ER = this.year1.ER;
 
       let beneficioBruto = ER.ingresos - ER.consumosGastosExternos;
       let gastosExplotacion =
@@ -126,7 +130,7 @@ new Vue({
       let resultadoAtribuidoGrupo = resultadoOperacionesContinuadas - ER.resultadoOperacionesInterrumpidas;
 
       //calculos de balance general
-      let balanceGral = this.firstYear.balanceGral;
+      let balanceGral = this.year1.balanceGral;
 
       let efectivoEInversionesCortoPlazo =
         parseInt(balanceGral.efectivo) +
@@ -188,9 +192,9 @@ new Vue({
       };
     },
 
-    computedSecondYear() {
+    computedYear2() {
       //calculos de estado de resultados
-      let ER = this.secondYear.ER;
+      let ER = this.year2.ER;
 
       let beneficioBruto = ER.ingresos - ER.consumosGastosExternos;
       let gastosExplotacion =
@@ -207,7 +211,7 @@ new Vue({
       let resultadoAtribuidoGrupo = resultadoOperacionesContinuadas - ER.resultadoOperacionesInterrumpidas;
 
       //calculos de balance general
-      let balanceGral = this.secondYear.balanceGral;
+      let balanceGral = this.year2.balanceGral;
 
       let efectivoEInversionesCortoPlazo =
         parseInt(balanceGral.efectivo) +
