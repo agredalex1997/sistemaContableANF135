@@ -267,9 +267,19 @@
                             <td><input type="number" v-model="secondYear.ER.impuestoBeneficios"></td>
                           </tr>
                           <tr>
-                            <th>Resultado ejercicio procedente de operaciones continuadas</th>
-                            <td>{{ computedFirstYear.ER.resultadoEjercicioOperacionesContinuadas }}</td>
-                            <td>{{ computedSecondYear.ER.resultadoEjercicioOperacionesContinuadas }}</td>
+                            <th>Resultado procedente de operaciones continuadas</th>
+                            <td>{{ computedFirstYear.ER.resultadoOperacionesContinuadas }}</td>
+                            <td>{{ computedSecondYear.ER.resultadoOperacionesContinuadas }}</td>
+                          </tr>
+                          <tr>
+                            <th>Resultado de operaciones interrumpidas</th>
+                            <td><input type="number" v-model="firstYear.ER.resultadoOperacionesInterrumpidas"></td>
+                            <td><input type="number" v-model="secondYear.ER.resultadoOperacionesInterrumpidas"></td>
+                          </tr>
+                          <tr>
+                            <th>Resultado atribuido al grupo</th>
+                            <td>{{ computedFirstYear.ER.resultadoAtribuidoGrupo }}</td>
+                            <td>{{ computedSecondYear.ER.resultadoAtribuidoGrupo }}</td>
                           </tr>
                         </tbody>
                       </table>
