@@ -35,6 +35,7 @@
                         <tr>
                           <th rowspan="2">CONCEPTO</th>
                           <th colspan="4">YEARS</th>
+                          <th colspan="2">ANALISIS HORIZONTAL</th>
                         </tr>
                         <tr>
                           <th colspan="2">{{ year1.year }}</th>
@@ -48,6 +49,8 @@
                           <td>{{ analisisVertical(computedYear1.balanceGral.totalActivosCorrientes, computedYear1.balanceGral.totalActivos) }} % </td>
                           <td>{{ computedYear2.balanceGral.totalActivosCorrientes }}</td>
                           <td>{{ analisisVertical(computedYear2.balanceGral.totalActivosCorrientes, computedYear2.balanceGral.totalActivos) }} % </td>
+                          <td>aqui iria la diferencia en cantidad</td>
+                          <td>aqui iria la diferencia en porcentaje</td>
                         </tr>
                         <tr>
                           <th>Efectivo e inversiones a corto plazo</th>
@@ -261,8 +264,8 @@
                             <th rowspan="2">ANALISIS HORIZONTAL</th>
                           </tr>
                           <tr>
-                            <th colspan="2">{{ year1.year }}</th>
-                            <th colspan="2">{{ year2.year }}</th>
+                            <th>{{ year1.year }}</th>
+                            <th>{{ year2.year }}</th>
                           </tr>
                           <tr>
 
