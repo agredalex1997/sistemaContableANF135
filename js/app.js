@@ -36,7 +36,7 @@ new Vue({
         otrosActivosPermanentes: 18177,
 
         cuentasPorPagar: 44242,
-        documentosPorPagar: 11977,
+        docsPorPagar: 11977,
         deudasEntidadesCredito: 6496,
         otrasCuentasPorPagar: 38099,
 
@@ -84,7 +84,7 @@ new Vue({
         otrosActivosPermanentes: 22283,
 
         cuentasPorPagar: 55888,
-        documentosPorPagar: 11964,
+        docsPorPagar: 11964,
         deudasEntidadesCredito: 8784,
         otrasCuentasPorPagar: 40230,
 
@@ -152,7 +152,7 @@ new Vue({
 
       let totalPasivosCorrientes =
         parseInt(balanceGral.cuentasPorPagar) +
-        parseInt(balanceGral.documentosPorPagar) +
+        parseInt(balanceGral.docsPorPagar) +
         parseInt(balanceGral.deudasEntidadesCredito) +
         parseInt(balanceGral.otrasCuentasPorPagar);
 
@@ -233,7 +233,7 @@ new Vue({
 
       let totalPasivosCorrientes =
         parseInt(balanceGral.cuentasPorPagar) +
-        parseInt(balanceGral.documentosPorPagar) +
+        parseInt(balanceGral.docsPorPagar) +
         parseInt(balanceGral.deudasEntidadesCredito) +
         parseInt(balanceGral.otrasCuentasPorPagar);
 
