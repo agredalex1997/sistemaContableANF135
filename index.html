@@ -30,19 +30,12 @@
                 <div class="row">
                   <div class="col-12">
                     <br>
-                    <table class="table-dark table-sm table-hover" style="width: 100%;">
+                    <table class="table-dark table-sm table-hover table-bordered" style="width: 100%;">
                       <thead style="text-align: center;">
-                        <col width="10">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="10%">
                         <tr>
                           <th rowspan="2">CUENTA</th>
                           <th colspan="4">ANIOS</th>
-                          <th colspan="2">ANALISIS HORIZONTAL</th>
+                          <th colspan="2" rowspan="2">ANALISIS HORIZONTAL</th>
                         </tr>
                         <tr>
                           <th colspan="2">{{ year1.year }}</th>
@@ -319,16 +312,16 @@
               <div id="er" class="container tab-pane fade"><br>
                 <div class="row">
                     <div class="col-12">
-                      <table class="table table-dark table-sm table-hover">
+                      <table class="table table-dark table-sm table-hover table-bordered">
                         <thead style="text-align: center;">
                           <tr>
-                            <th rowspan="2">CONCEPTO</th>
-                            <th colspan="2">YEARS</th>
-                            <th rowspan="2">ANALISIS HORIZONTAL</th>
+                            <th rowspan="2">CUENTA</th>
+                            <th colspan="4">ANIOS</th>
+                            <th rowspan="2" colspan="2">ANALISIS HORIZONTAL</th>
                           </tr>
                           <tr>
-                            <th>{{ year1.year }}</th>
-                            <th>{{ year2.year }}</th>
+                            <th colspan="2">{{ year1.year }}</th>
+                            <th colspan="2">{{ year2.year }}</th>
                           </tr>
                           <tr>
 
@@ -338,72 +331,128 @@
                           <tr>
                             <th>Ingresos</th>
                             <td><input type="text" size="6" v-model="year1.ER.ingresos"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.ingresos"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.ingresos - year1.ER.ingresos) }}</td>
+                            <td>{{ ((year2.ER.ingresos - year1.ER.ingresos) / year1.ER.ingresos * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Consumos y otros gastos externos</th>
                             <td><input type="text" size="6" v-model="year1.ER.consumosGastosExternos"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.consumosGastosExternos"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.consumosGastosExternos - year1.ER.consumosGastosExternos) }}</td>
+                            <td>{{ ((year2.ER.consumosGastosExternos - year1.ER.consumosGastosExternos) / year1.ER.consumosGastosExternos * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Beneficio bruto</th>
                             <td>{{ computedYear1.ER.beneficioBruto }}</td>
+                            <td></td>
                             <td>{{ computedYear2.ER.beneficioBruto }}</td>
+                            <td></td>
+                            <td>{{ computedYear2.ER.beneficioBruto - computedYear1.ER.beneficioBruto }}</td>
+                            <td>{{ ((computedYear2.ER.beneficioBruto - computedYear1.ER.beneficioBruto) / computedYear1.ER.beneficioBruto * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Total gastos de explotacion</th>
                             <td>{{ computedYear1.ER.gastosExplotacion }}</td>
+                            <td></td>
                             <td>{{ computedYear2.ER.gastosExplotacion }}</td>
+                            <td></td>
+                            <td>{{ computedYear2.ER.gastosExplotacion - computedYear1.ER.gastosExplotacion }}</td>
+                            <td>{{ ((computedYear2.ER.gastosExplotacion - computedYear1.ER.gastosExplotacion) / computedYear1.ER.gastosExplotacion * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Gastos de personal</th>
                             <td><input type="text" size="6" v-model="year1.ER.gastosPersonal"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.gastosPersonal"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.gastosPersonal - year1.ER.gastosPersonal) }}</td>
+                            <td>{{ ((year2.ER.gastosPersonal - year1.ER.gastosPersonal) / year1.ER.gastosPersonal * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>I + D</th>
                             <td><input type="text" size="6" v-model="year1.ER.investigacionDev"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.investigacionDev"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.investigacionDev - year1.ER.investigacionDev) }}</td>
+                            <td>{{ ((year2.ER.investigacionDev - year1.ER.investigacionDev) / year1.ER.investigacionDev * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Resultados de explotacion</th>
                             <td>{{ computedYear1.ER.resultadoExplotacion }}</td>
+                            <td></td>
                             <td>{{ computedYear2.ER.resultadoExplotacion }}</td>
+                            <td></td>
+                            <td>{{ computedYear2.ER.resultadoExplotacion - computedYear1.ER.resultadoExplotacion }}</td>
+                            <td>{{ ((computedYear2.ER.resultadoExplotacion - computedYear1.ER.resultadoExplotacion) / computedYear1.ER.resultadoExplotacion * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Ingresos financieros</th>
                             <td><input type="text" size="6" v-model="year1.ER.ingresosFinancieros"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.ingresosFinancieros"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.ingresosFinancieros - year1.ER.ingresosFinancieros) }}</td>
+                            <td>{{ ((year2.ER.ingresosFinancieros - year1.ER.ingresosFinancieros) / year1.ER.ingresosFinancieros * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Otros gastos</th>
                             <td><input type="text" size="6" v-model="year1.ER.otrosGastos"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.otrosGastos"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.otrosGastos - year1.ER.otrosGastos) }}</td>
+                            <td>{{ ((year2.ER.otrosGastos - year1.ER.otrosGastos) / year1.ER.otrosGastos * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Resultados ordinario antes de impuestos</th>
                             <td>{{ computedYear1.ER.resultadoOrdinarioAntesImpuestos }}</td>
+                            <td></td>
                             <td>{{ computedYear2.ER.resultadoOrdinarioAntesImpuestos }}</td>
+                            <td></td>
+                            <td>{{ computedYear2.ER.resultadoOrdinarioAntesImpuestos - computedYear1.ER.resultadoOrdinarioAntesImpuestos }}</td>
+                            <td>{{ ((computedYear2.ER.resultadoOrdinarioAntesImpuestos - computedYear1.ER.resultadoOrdinarioAntesImpuestos) / computedYear1.ER.resultadoOrdinarioAntesImpuestos * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Impuesto sobre beneficios</th>
                             <td><input type="text" size="6" v-model="year1.ER.impuestoBeneficios"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.impuestoBeneficios"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.impuestoBeneficios - year1.ER.impuestoBeneficios) }}</td>
+                            <td>{{ ((year2.ER.impuestoBeneficios- year1.ER.impuestoBeneficios) / year1.ER.impuestoBeneficios * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Resultado procedente de operaciones continuadas</th>
                             <td>{{ computedYear1.ER.resultadoOperacionesContinuadas }}</td>
+                            <td></td>
                             <td>{{ computedYear2.ER.resultadoOperacionesContinuadas }}</td>
+                            <td></td>
+                            <td>{{ computedYear2.ER.resultadoOperacionesContinuadas - computedYear1.ER.resultadoOperacionesContinuadas }}</td>
+                            <td>{{ ((computedYear2.ER.resultadoOperacionesContinuadas - computedYear1.ER.resultadoOperacionesContinuadas) / computedYear1.ER.resultadoOperacionesContinuadas * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Resultado de operaciones interrumpidas</th>
                             <td><input type="text" size="6" v-model="year1.ER.resultadoOperacionesInterrumpidas"></td>
+                            <td></td>
                             <td><input type="text" size="6" v-model="year2.ER.resultadoOperacionesInterrumpidas"></td>
+                            <td></td>
+                            <td>{{ (year2.ER.resultadoOperacionesInterrumpidas - year1.ER.resultadoOperacionesInterrumpidas) }}</td>
+                            <td>{{ ((year2.ER.resultadoOperacionesInterrumpidas- year1.ER.resultadoOperacionesInterrumpidas) / year1.ER.resultadoOperacionesInterrumpidas * 100).toFixed(2) }} %</td>
                           </tr>
                           <tr>
                             <th>Resultado atribuido al grupo</th>
                             <td>{{ computedYear1.ER.resultadoAtribuidoGrupo }}</td>
+                            <td></td>
                             <td>{{ computedYear2.ER.resultadoAtribuidoGrupo }}</td>
+                            <td></td>
+                            <td>{{ computedYear2.ER.resultadoAtribuidoGrupo - computedYear1.ER.resultadoAtribuidoGrupo }}</td>
+                            <td>{{ ((computedYear2.ER.resultadoAtribuidoGrupo - computedYear1.ER.resultadoAtribuidoGrupo) / computedYear1.ER.resultadoAtribuidoGrupo * 100).toFixed(2) }} %</td>
                           </tr>
                         </tbody>
                       </table>
