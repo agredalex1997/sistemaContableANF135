@@ -462,15 +462,17 @@
                     </div>
                   </div>
               </div>
+
               <div id="razonesfinancieras" class="container tab-pane fade"><br>
                 <div class="row">
                     <div class="col-6">
-                      <h2>{{ year1.year }}</h2>
+                      <h1>{{ year1.year }}</h1>
+                      <h2>Razones de liquidez</h2>
                       <div class="card text-white bg-primary">
                         <div class="card-body">
                           <h5 class="card-title">Liquidez corriente</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Activos corrientes / Pasivos corrientes</h6>
-                          <p class="card-text">{{ computedYear1.razones.liquidezCorriente }}</p>
+                          <h6 class="card-subtitle mb-2">Activos corrientes / Pasivos corrientes</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.liquidezCorriente }}</h3>
                         </div>
                       </div>
 
@@ -478,46 +480,243 @@
                       <div class="card text-white bg-primary">
                           <div class="card-body">
                             <h5 class="card-title">Prueba acida</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">(Activos corrientes - Inventarios) / Pasivos corrientes</h6>
-                            <p class="card-text">{{ computedYear1.razones.pruebaAcida }}</p>
+                            <h6 class="card-subtitle mb-2">(Activos corrientes - Inventarios) / Pasivos corrientes</h6>
+                            <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.pruebaAcida }}</h3>
                           </div>
                         </div>
 
                         <br>
+                        <br>
+                        <h2>Indices de actividad</h2>
                         <div class="card text-white bg-primary">
                             <div class="card-body">
                               <h5 class="card-title">Rotacion de inventarios</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Costo de los bienes vendidos / Inventarios</h6>
-                              <p class="card-text">{{ computedYear1.razones.rotacionInventarios }}</p>
+                              <h6 class="card-subtitle mb-2">Costo de los bienes vendidos / Inventarios</h6>
+                              <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.rotacionInventarios }}</h3>
+                              <a href="https://www.theatlantic.com/technology/archive/2012/05/wow-apple-turns-over-its-inventory-once-every-5-days/257915/" target="_blank" class="card-text">Fuente</a>
                             </div>
                           </div>
 
                           <br>
                         <div class="card text-white bg-primary">
                             <div class="card-body">
-                              <h5 class="card-title">Periodo promedio de cobro</h5>
-                              <h6 class="card-subtitle mb-2 text-muted">Cuentas por cobrar / (Ventas anuales / 365)</h6>
-                              <p class="card-text">{{ computedYear1.razones.ppc }}</p>
+                              <h5 class="card-title">Periodo promedio de cobro (PPC)</h5>
+                              <h6 class="card-subtitle mb-2">Cuentas por cobrar / (Ventas anuales / 365)</h6>
+                              <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.ppc }}</h3>
                             </div>
                           </div>
 
                           <br>
                           <div class="card text-white bg-primary">
                               <div class="card-body">
-                                <h5 class="card-title">Periodo promedio de pago</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Cuentas por pagar / (Compras anuales / 365)</h6>
-                                <p class="card-text">{{ computedYear1.razones.ppp }}</p>
+                                <h5 class="card-title">Periodo promedio de pago (PPP)</h5>
+                                <h6 class="card-subtitle mb-2">Cuentas por pagar / (Compras anuales / 365)</h6>
+                                <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.ppp }}</h3>
                               </div>
                             </div>
-                    </div>
 
-                    <div class="col-6">
+                            <br>
+                            <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Rotacion de activos totales</h5>
+                                  <h6 class="card-subtitle mb-2">Ventas / Total de activos</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.rotacionActivosTotales }}</h3>
+                                </div>
+                              </div>
+
+                              <br>
+                              <br>
+                              <h2>Razones de endeudamiento</h2>
+                              <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Indice de endeudamiento</h5>
+                                  <h6 class="card-subtitle mb-2">Total de pasivos / Toal de activos</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.indiceEndeudamiento }}</h3>
+                                </div>
+                              </div>
+
+                              <br>
+                              <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Razon de cargos de interes fijo</h5>
+                                  <h6 class="card-subtitle mb-2">Utilidad antes de intereses e impuestos / Intereses</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.razonCargosInteresFijo }}</h3>
+                                </div>
+                              </div>
+
+                              <br>
+                              <br>
+                              <h2>Indices de rentabilidad</h2>
+                              <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Margen de utilidad bruta</h5>
+                                  <h6 class="card-subtitle mb-2">(Ventas - Costo de los bienes vendidos) / Ventas</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.margenUtilidadBruta }}</h3>
+                                </div>
+                              </div>
+
+                      <br>
                       <div class="card text-white bg-primary">
                         <div class="card-body">
-                          <h5 class="card-title">Margen de utilidad bruta {{ year2.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6> 
-                          <p class="card-text">{{
-                          margenUtilidad(computedYear2.ER.utilidadBruta, computedYear2.ER.ventasNetas) }}</p>
+                          <h5 class="card-title">Margen de utilidad operativa</h5>
+                          <h6 class="card-subtitle mb-2">Utilidad Operativa / Ventas</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.margenUtilidadOperativa }}</h3>
+                        </div>
+                      </div>
+
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad neta</h5>
+                          <h6 class="card-subtitle mb-2">Ganancias disponibles para accionistas comunes / Ventas</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.margenUtilidadNeta }}</h3>
+                        </div>
+                      </div>
+
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Rendimiento sobre activos totales (RSA)</h5>
+                          <h6 class="card-subtitle mb-2">Ganancias disponibles para accionista comunes / Total de activos</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.rsa }}</h3>
+                        </div>
+                      </div>
+
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Rendimiento sobre patrimonio (RSP)</h5>
+                          <h6 class="card-subtitle mb-2">Ganancias disponibles para accionista comunes / Capital en acciones comunes</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear1.razones.rsp }}</h3>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!--segundo anio-->
+                    <div class="col-6">
+                      <h1>{{ year2.year }}</h1>
+                      <h2>Razones de liquidez</h2>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Liquidez corriente</h5>
+                          <h6 class="card-subtitle mb-2">Activos corrientes / Pasivos corrientes</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.liquidezCorriente }}</h3>
+                        </div>
+                      </div>
+                    
+                      <br>
+                      <div class="card text-white bg-primary">
+                          <div class="card-body">
+                            <h5 class="card-title">Prueba acida</h5>
+                            <h6 class="card-subtitle mb-2">(Activos corrientes - Inventarios) / Pasivos corrientes</h6>
+                            <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.pruebaAcida }}</h3>
+                          </div>
+                        </div>
+                    
+                        <br>
+                        <br>
+                        <h2>Indices de actividad</h2>
+                        <div class="card text-white bg-primary">
+                            <div class="card-body">
+                              <h5 class="card-title">Rotacion de inventarios</h5>
+                              <h6 class="card-subtitle mb-2">Costo de los bienes vendidos / Inventarios</h6>
+                              <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.rotacionInventarios }}</h3>
+                              <a href="https://www.theatlantic.com/technology/archive/2012/05/wow-apple-turns-over-its-inventory-once-every-5-days/257915/" target="_blank" class="card-text">Fuente</a>
+                            </div>
+                          </div>
+                    
+                          <br>
+                        <div class="card text-white bg-primary">
+                            <div class="card-body">
+                              <h5 class="card-title">Periodo promedio de cobro (PPC)</h5>
+                              <h6 class="card-subtitle mb-2">Cuentas por cobrar / (Ventas anuales / 365)</h6>
+                              <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.ppc }}</h3>
+                            </div>
+                          </div>
+                    
+                          <br>
+                          <div class="card text-white bg-primary">
+                              <div class="card-body">
+                                <h5 class="card-title">Periodo promedio de pago (PPP)</h5>
+                                <h6 class="card-subtitle mb-2">Cuentas por pagar / (Compras anuales / 365)</h6>
+                                <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.ppp }}</h3>
+                              </div>
+                            </div>
+                    
+                            <br>
+                            <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Rotacion de activos totales</h5>
+                                  <h6 class="card-subtitle mb-2">Ventas / Total de activos</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.rotacionActivosTotales }}</h3>
+                                </div>
+                              </div>
+                    
+                              <br>
+                              <br>
+                              <h2>Razones de endeudamiento</h2>
+                              <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Indice de endeudamiento</h5>
+                                  <h6 class="card-subtitle mb-2">Total de pasivos / Toal de activos</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.indiceEndeudamiento }}</h3>
+                                </div>
+                              </div>
+                    
+                              <br>
+                              <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Razon de cargos de interes fijo</h5>
+                                  <h6 class="card-subtitle mb-2">Utilidad antes de intereses e impuestos / Intereses</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.razonCargosInteresFijo }}</h3>
+                                </div>
+                              </div>
+                    
+                              <br>
+                              <br>
+                              <h2>Indices de rentabilidad</h2>
+                              <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                  <h5 class="card-title">Margen de utilidad bruta</h5>
+                                  <h6 class="card-subtitle mb-2">(Ventas - Costo de los bienes vendidos) / Ventas</h6>
+                                  <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.margenUtilidadBruta }}</h3>
+                                </div>
+                              </div>
+                    
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad operativa</h5>
+                          <h6 class="card-subtitle mb-2">Utilidad Operativa / Ventas</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.margenUtilidadOperativa }}</h3>
+                        </div>
+                      </div>
+                    
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Margen de utilidad neta</h5>
+                          <h6 class="card-subtitle mb-2">Ganancias disponibles para accionistas comunes / Ventas</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.margenUtilidadNeta }}</h3>
+                        </div>
+                      </div>
+                    
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Rendimiento sobre activos totales (RSA)</h5>
+                          <h6 class="card-subtitle mb-2">Ganancias disponibles para accionista comunes / Total de activos</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.rsa }}</h3>
+                        </div>
+                      </div>
+                    
+                      <br>
+                      <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 class="card-title">Rendimiento sobre patrimonio (RSP)</h5>
+                          <h6 class="card-subtitle mb-2">Ganancias disponibles para accionista comunes / Capital en acciones comunes</h6>
+                          <h3 class="card-text" style="text-align: right">{{ computedYear2.razones.rsp }}</h3>
                         </div>
                       </div>
                     </div>

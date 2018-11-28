@@ -171,16 +171,27 @@ new Vue({
       let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
       //calculos de razones financieras
+      //razones de liquidez
       let liquidezCorriente = (totalActivosCorrientes / totalPasivosCorrientes).toFixed(2);
       let pruebaAcida = ((totalActivosCorrientes - balanceGral.inventarios) / totalPasivosCorrientes).toFixed(2);
+
+      //indices de actividad
       let rotacionInventarios = (ER.consumosGastosExternos / balanceGral.inventarios).toFixed(2);
       let ppc = (balanceGral.cuentasPorCobrar / (ER.ingresos / 365)).toFixed(2);
       let ppp = (balanceGral.cuentasPorPagar / (ER.consumosGastosExternos / 365)).toFixed(2)
+      let rotacionActivosTotales = (ER.ingresos / totalActivos).toFixed(2);
+
+      //indices de endeudamiento
+      let indiceEndeudamiento = (totalPasivos / totalActivos).toFixed(2);
+      let razonCargosInteresFijo = (resultadoOrdinarioAntesImpuestos / ER.impuestoBeneficios).toFixed(2);
+
+      //indices de rentabilidad
+      let margenUtilidadBruta = (beneficioBruto / ER.ingresos).toFixed(2);
+      let margenUtilidadOperativa = (resultadoExplotacion / ER.ingresos).toFixed(2);
 
       let margenUtilidadNeta = (resultadoAtribuidoGrupo / ER.ingresos).toFixed(
         2
       );
-      let rotacionActivosTotales = (ER.ingresos / totalActivos).toFixed(2);
       let rsa = (margenUtilidadNeta * rotacionActivosTotales).toFixed(2); //rendimiento sobre activos totales
       let maf = (totalActivos / balanceGral.accionesComunes).toFixed(2); //multiplicador de apalancamiento financiero
       let rsp = (maf * rsa).toFixed(2); //rendimiento sobre patrimonio
@@ -215,8 +226,12 @@ new Vue({
           rotacionInventarios,
           ppc,
           ppp,
-          margenUtilidadNeta,
           rotacionActivosTotales,
+          indiceEndeudamiento,
+          razonCargosInteresFijo,
+          margenUtilidadBruta,
+          margenUtilidadOperativa,
+          margenUtilidadNeta,
           rsa,
           maf,
           rsp
@@ -286,13 +301,31 @@ new Vue({
       let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
       //calculos de razones financieras
+      //razones de liquidez
+      let liquidezCorriente = (totalActivosCorrientes / totalPasivosCorrientes).toFixed(2);
+      let pruebaAcida = ((totalActivosCorrientes - balanceGral.inventarios) / totalPasivosCorrientes).toFixed(2);
+
+      //indices de actividad
+      let rotacionInventarios = (ER.consumosGastosExternos / balanceGral.inventarios).toFixed(2);
+      let ppc = (balanceGral.cuentasPorCobrar / (ER.ingresos / 365)).toFixed(2);
+      let ppp = (balanceGral.cuentasPorPagar / (ER.consumosGastosExternos / 365)).toFixed(2)
+      let rotacionActivosTotales = (ER.ingresos / totalActivos).toFixed(2);
+
+      //indices de endeudamiento
+      let indiceEndeudamiento = (totalPasivos / totalActivos).toFixed(2);
+      let razonCargosInteresFijo = (resultadoOrdinarioAntesImpuestos / ER.impuestoBeneficios).toFixed(2);
+
+      //indices de rentabilidad
+      let margenUtilidadBruta = (beneficioBruto / ER.ingresos).toFixed(2);
+      let margenUtilidadOperativa = (resultadoExplotacion / ER.ingresos).toFixed(2);
+
       let margenUtilidadNeta = (resultadoAtribuidoGrupo / ER.ingresos).toFixed(
         2
       );
-      let rotacionActivosTotales = (ER.ingresos / totalActivos).toFixed(2);
       let rsa = (margenUtilidadNeta * rotacionActivosTotales).toFixed(2); //rendimiento sobre activos totales
       let maf = (totalActivos / balanceGral.accionesComunes).toFixed(2); //multiplicador de apalancamiento financiero
       let rsp = (maf * rsa).toFixed(2); //rendimiento sobre patrimonio
+
 
       return {
         ER: {
@@ -318,8 +351,17 @@ new Vue({
         },
 
         razones: {
-          margenUtilidadNeta,
+          liquidezCorriente,
+          pruebaAcida,
+          rotacionInventarios,
+          ppc,
+          ppp,
           rotacionActivosTotales,
+          indiceEndeudamiento,
+          razonCargosInteresFijo,
+          margenUtilidadBruta,
+          margenUtilidadOperativa,
+          margenUtilidadNeta,
           rsa,
           maf,
           rsp
