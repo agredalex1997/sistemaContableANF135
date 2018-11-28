@@ -168,6 +168,8 @@ new Vue({
         balanceGral.otrasParticipaciones;
       let totalPasivoCapitalContable =
         parseInt(totalPasivos) + parseInt(capitalContable);
+      let totalActivosFijos = totalActivos - totalActivosCorrientes;
+      let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
       return {
         ER: {
@@ -183,8 +185,10 @@ new Vue({
           efectivoEInversionesCortoPlazo,
           totalActivosCorrientes,
           inmueblesMobiliarioYEquipoNeto,
+          totalActivosFijos,
           totalActivos,
           totalPasivosCorrientes,
+          totalPasivosFijos,
           totalPasivos,
           capitalContable,
           totalPasivoCapitalContable
@@ -249,6 +253,8 @@ new Vue({
         balanceGral.otrasParticipaciones;
       let totalPasivoCapitalContable =
         parseInt(totalPasivos) + parseInt(capitalContable);
+      let totalActivosFijos = totalActivos - totalActivosCorrientes;
+      let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
       return {
         ER: {
@@ -264,8 +270,10 @@ new Vue({
           efectivoEInversionesCortoPlazo,
           totalActivosCorrientes,
           inmueblesMobiliarioYEquipoNeto,
+          totalActivosFijos,
           totalActivos,
           totalPasivosCorrientes,
+          totalPasivosFijos,
           totalPasivos,
           capitalContable,
           totalPasivoCapitalContable
