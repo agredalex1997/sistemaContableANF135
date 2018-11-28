@@ -171,6 +171,12 @@ new Vue({
       let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
       //calculos de razones financieras
+      let liquidezCorriente = (totalActivosCorrientes / totalPasivosCorrientes).toFixed(2);
+      let pruebaAcida = ((totalActivosCorrientes - balanceGral.inventarios) / totalPasivosCorrientes).toFixed(2);
+      let rotacionInventarios = (ER.consumosGastosExternos / balanceGral.inventarios).toFixed(2);
+      let ppc = (balanceGral.cuentasPorCobrar / (ER.ingresos / 365)).toFixed(2);
+      let ppp = (balanceGral.cuentasPorPagar / (ER.consumosGastosExternos / 365)).toFixed(2)
+
       let margenUtilidadNeta = (resultadoAtribuidoGrupo / ER.ingresos).toFixed(
         2
       );
@@ -178,6 +184,7 @@ new Vue({
       let rsa = (margenUtilidadNeta * rotacionActivosTotales).toFixed(2); //rendimiento sobre activos totales
       let maf = (totalActivos / balanceGral.accionesComunes).toFixed(2); //multiplicador de apalancamiento financiero
       let rsp = (maf * rsa).toFixed(2); //rendimiento sobre patrimonio
+
 
       return {
         ER: {
@@ -203,6 +210,11 @@ new Vue({
         },
 
         razones: {
+          liquidezCorriente,
+          pruebaAcida,
+          rotacionInventarios,
+          ppc,
+          ppp,
           margenUtilidadNeta,
           rotacionActivosTotales,
           rsa,

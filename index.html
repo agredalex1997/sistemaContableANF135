@@ -465,73 +465,63 @@
               <div id="razonesfinancieras" class="container tab-pane fade"><br>
                 <div class="row">
                     <div class="col-6">
-                      <br>
+                      <h2>{{ year1.year }}</h2>
                       <div class="card text-white bg-primary">
                         <div class="card-body">
-                          <h5 class="card-title">Margen de utilidad bruta {{ year1.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6 <p class="card-text">{{
-                          margenUtilidad(computedYear1.ER.utilidadBruta, computedYear1.ER.ventasNetas) }}</p>
+                          <h5 class="card-title">Liquidez corriente</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Activos corrientes / Pasivos corrientes</h6>
+                          <p class="card-text">{{ computedYear1.razones.liquidezCorriente }}</p>
                         </div>
                       </div>
+
                       <br>
                       <div class="card text-white bg-primary">
-                        <div class="card-body">
-                          <h5 class="card-title">Margen de utilidad operativa {{ year1.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad operariva / Ventas</h6 <p class="card-text">{{
-                          margenUtilidad(computedYear1.ER.utilidadOperativa, computedYear1.ER.ventasNetas) }}</p>
+                          <div class="card-body">
+                            <h5 class="card-title">Prueba acida</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">(Activos corrientes - Inventarios) / Pasivos corrientes</h6>
+                            <p class="card-text">{{ computedYear1.razones.pruebaAcida }}</p>
+                          </div>
                         </div>
-                      </div>
-                      <br>
-                      <div class="card text-white bg-primary">
-                        <div class="card-body">
-                          <h5 class="card-title">Margen de utilidad neta {{ year1.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6 <p class="card-text">{{
-                          margenUtilidad(computedYear1.ER.utilidadADistribuir, computedYear1.ER.ventasNetas) }}</p>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="card text-white bg-primary">
-                        <div class="card-body">
-                          <h5 class="card-title">Ganancias por accion {{ year1.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6 <p class="card-text">{{
-                          computedYear1.ER.utilidadADistribuir / year1.acciones }}</p>
-                        </div>
-                      </div>
+
+                        <br>
+                        <div class="card text-white bg-primary">
+                            <div class="card-body">
+                              <h5 class="card-title">Rotacion de inventarios</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Costo de los bienes vendidos / Inventarios</h6>
+                              <p class="card-text">{{ computedYear1.razones.rotacionInventarios }}</p>
+                            </div>
+                          </div>
+
+                          <br>
+                        <div class="card text-white bg-primary">
+                            <div class="card-body">
+                              <h5 class="card-title">Periodo promedio de cobro</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Cuentas por cobrar / (Ventas anuales / 365)</h6>
+                              <p class="card-text">{{ computedYear1.razones.ppc }}</p>
+                            </div>
+                          </div>
+
+                          <br>
+                          <div class="card text-white bg-primary">
+                              <div class="card-body">
+                                <h5 class="card-title">Periodo promedio de pago</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cuentas por pagar / (Compras anuales / 365)</h6>
+                                <p class="card-text">{{ computedYear1.razones.ppp }}</p>
+                              </div>
+                            </div>
                     </div>
+
                     <div class="col-6">
-                      <br>
                       <div class="card text-white bg-primary">
                         <div class="card-body">
                           <h5 class="card-title">Margen de utilidad bruta {{ year2.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6 <p class="card-text">{{
+                          <h6 class="card-subtitle mb-2 text-muted">Utilidad bruta / Ventas</h6> 
+                          <p class="card-text">{{
                           margenUtilidad(computedYear2.ER.utilidadBruta, computedYear2.ER.ventasNetas) }}</p>
                         </div>
                       </div>
-                      <br>
-                      <div class="card text-white bg-primary">
-                        <div class="card-body">
-                          <h5 class="card-title">Margen de utilidad operativa {{ year2.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad operativa / Ventas</h6 <p class="card-text">{{
-                          margenUtilidad(computedYear2.ER.utilidadOperativa, computedYear2.ER.ventasNetas) }}</p>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="card text-white bg-primary">
-                        <div class="card-body">
-                          <h5 class="card-title">Margen de utilidad neta {{ year2.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Ventas</h6 <p class="card-text">{{
-                          margenUtilidad(computedYear2.ER.utilidadADistribuir, computedYear2.ER.ventasNetas) }}</p>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="card text-white bg-primary">
-                        <div class="card-body">
-                          <h5 class="card-title">Ganancias por accion {{ year2.year }}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Utilidad a distribuir / Acciones en circulacion</h6 <p class="card-text">{{
-                          computedYear2.ER.utilidadADistribuir / year2.acciones }}</p>
-                        </div>
-                      </div>
                     </div>
+
                   </div>
               </div>
               <div id="dupont" class="container tab-pane fade"><br>
