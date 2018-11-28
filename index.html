@@ -537,6 +537,88 @@
               <div id="dupont" class="container tab-pane fade"><br>
                 <div class="row">
                     <div class="col-12">
+                        <h1>{{ year1.year }}</h1>
+                        <table class="table-dark table-sm table-hover table-bordered">
+                          <tbody>
+                            <tr>
+                              <td>Ingresos</td>
+                              <td>{{ year1.ER.ingresos }}</td>
+                              <td rowspan="6"></td>
+                              <td rowspan="3">Resultado atribuido al grupo</td>
+                              <td rowspan="3">{{ computedYear1.ER.resultadoAtribuidoGrupo }}</td>
+                              <td rowspan="6"></td>
+                              <td rowspan="6">Margen de utilidad neta</td>
+                              <td rowspan="6">{{ computedYear1.razones.margenUtilidadNeta * 100}} %</td>
+                              <td rowspan="8"></td>
+                              <td rowspan="8">Rendimiento sobre los activos totales</td>
+                              <td rowspan="8">{{ computedYear1.razones.rsa * 100}} %</td>
+                              <td rowspan="10"></td>
+                              <td rowspan="10">Rendimiento sobre el patrimonio</td>
+                              <td rowspan="10">{{ computedYear1.razones.rsp }} %</td>
+                            </tr>
+                            <tr>
+                              <td>Consumos y otros gastos externos</td>
+                              <td>{{ year1.ER.consumosGastosExternos }}</td>
+                            </tr>
+                            <tr>
+                              <td>Total gastos de explotacion</td>
+                              <td>{{ computedYear1.ER.gastosExplotacion }}</td>
+                            </tr>
+                            <tr>
+                              <td>Impuestos sobre beneficios</td>
+                              <td>{{ year1.ER.impuestoBeneficios }}</td>
+                              <td rowspan="3">Ingresos</td>
+                              <td rowspan="3">{{ year1.ER.ingresos }}</td>
+                            </tr>
+                            <tr>
+                              <td>Ingresos financieros</td>
+                              <td>{{ year1.ER.ingresosFinancieros }}</td>
+                            </tr>
+                            <tr>
+                              <td>Otros gastos</td>
+                              <td>{{ year1.ER.otrosGastos }}</td>
+                            </tr>
+                            <tr>
+                              <td>Activos corrientes</td>
+                              <td>{{ computedYear1.balanceGral.totalActivosCorrientes }}</td>
+                              <td rowspan="2"></td>
+                              <td>Ingresos</td>
+                              <td>{{ year1.ER.ingresos }}</td>
+                              <td rowspan="2"></td>
+                              <td rowspan="2">Rotacion de activos totales</td>
+                              <td rowspan="2">{{ computedYear1.razones.rotacionActivosTotales }}</td>
+                            </tr>
+                            <tr>
+                              <td>Activos fijos</td>
+                              <td>{{ computedYear1.balanceGral.totalActivosFijos}}</td>
+                              <td>Total de activos</td>
+                              <td>{{ computedYear1.balanceGral.totalActivos }}</td>
+                            </tr>
+                            <tr>
+                              <td>Pasivos corrientes</td>
+                              <td>{{ computedYear1.balanceGral.totalPasivosCorrientes}}</td>
+                              <td rowspan="2"></td>
+                              <td>Total de pasivos</td>
+                              <td>{{ computedYear1.balanceGral.totalPasivos }}</td>
+                              <td rowspan="2"></td>
+                              <td>Total de activos</td>
+                              <td>{{ computedYear1.balanceGral.totalActivos }}</td>
+                              <td rowspan="2"></td>
+                              <td rowspan="2">Multiplicador de apalancamiento financiero</td>
+                              <td rowspan="2">{{ computedYear1.razones.maf }}</td>
+                            </tr>
+                            <tr>
+                              <td>Pasivo fijo</td>
+                              <td>{{ computedYear1.balanceGral.totalPasivosFijos }}</td>
+                              <td>Capital contable</td>
+                              <td>{{ computedYear1.balanceGral.capitalContable }}</td>
+                              <td>Capital en acciones comunes</td>
+                              <td>{{ year1.balanceGral.accionesComunes }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <br>
+                      <h1>{{ year2.year }}</h1>
                       <table class="table-dark table-sm table-hover table-bordered">
                         <tbody>
                           <tr>
@@ -545,6 +627,15 @@
                             <td rowspan="6"></td>
                             <td rowspan="3">Resultado atribuido al grupo</td>
                             <td rowspan="3">{{ computedYear2.ER.resultadoAtribuidoGrupo }}</td>
+                            <td rowspan="6"></td>
+                            <td rowspan="6">Margen de utilidad neta</td>
+                            <td rowspan="6">{{ computedYear2.razones.margenUtilidadNeta * 100}} %</td>
+                            <td rowspan="8"></td>
+                            <td rowspan="8">Rendimiento sobre los activos totales</td>
+                            <td rowspan="8">{{ computedYear2.razones.rsa * 100}} %</td>
+                            <td rowspan="10"></td>
+                            <td rowspan="10">Rendimiento sobre el patrimonio</td>
+                            <td rowspan="10">{{ computedYear2.razones.rsp }} %</td>
                           </tr>
                           <tr>
                             <td>Consumos y otros gastos externos</td>
@@ -574,6 +665,9 @@
                             <td rowspan="2"></td>
                             <td>Ingresos</td>
                             <td>{{ year2.ER.ingresos }}</td>
+                            <td rowspan="2"></td>
+                            <td rowspan="2">Rotacion de activos totales</td>
+                            <td rowspan="2">{{ computedYear2.razones.rotacionActivosTotales }}</td>
                           </tr>
                           <tr>
                             <td>Activos fijos</td>
@@ -587,12 +681,20 @@
                             <td rowspan="2"></td>
                             <td>Total de pasivos</td>
                             <td>{{ computedYear2.balanceGral.totalPasivos }}</td>
+                            <td rowspan="2"></td>
+                            <td>Total de activos</td>
+                            <td>{{ computedYear2.balanceGral.totalActivos }}</td>
+                            <td rowspan="2"></td>
+                            <td rowspan="2">Multiplicador de apalancamiento financiero</td>
+                            <td rowspan="2">{{ computedYear2.razones.maf }}</td>
                           </tr>
                           <tr>
                             <td>Pasivo fijo</td>
                             <td>{{ computedYear2.balanceGral.totalPasivosFijos }}</td>
                             <td>Capital contable</td>
-                            <td>{{ computedYear2.balanceGral.capitalContable}}</td>
+                            <td>{{ computedYear2.balanceGral.capitalContable }}</td>
+                            <td>Capital en acciones comunes</td>
+                            <td>{{ year2.balanceGral.accionesComunes }}</td>
                           </tr>
                         </tbody>
                       </table>

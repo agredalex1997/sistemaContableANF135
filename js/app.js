@@ -18,8 +18,7 @@ new Vue({
 
         impuestoBeneficios: 15738,
 
-        resultadoOperacionesInterrumpidas: 0,
-
+        resultadoOperacionesInterrumpidas: 0
       },
 
       balanceGral: {
@@ -66,8 +65,7 @@ new Vue({
 
         impuestoBeneficios: 11857,
 
-        resultadoOperacionesInterrumpidas: 1515,
-
+        resultadoOperacionesInterrumpidas: 1515
       },
 
       balanceGral: {
@@ -97,7 +95,7 @@ new Vue({
         gananciaNoRealizada: 810,
         otrasParticipaciones: 4264
       }
-    },
+    }
   }),
 
   methods: {
@@ -106,7 +104,7 @@ new Vue({
     },
 
     analisisVertical(fraccion, total) {
-      return (fraccion / total * 100).toFixed(2);
+      return ((fraccion / total) * 100).toFixed(2);
     }
   },
 
@@ -127,7 +125,8 @@ new Vue({
         ER.otrosGastos;
       let resultadoOperacionesContinuadas =
         resultadoOrdinarioAntesImpuestos - ER.impuestoBeneficios;
-      let resultadoAtribuidoGrupo = resultadoOperacionesContinuadas - ER.resultadoOperacionesInterrumpidas;
+      let resultadoAtribuidoGrupo =
+        resultadoOperacionesContinuadas - ER.resultadoOperacionesInterrumpidas;
 
       //calculos de balance general
       let balanceGral = this.year1.balanceGral;
@@ -171,6 +170,15 @@ new Vue({
       let totalActivosFijos = totalActivos - totalActivosCorrientes;
       let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
+      //calculos de razones financieras
+      let margenUtilidadNeta = (resultadoAtribuidoGrupo / ER.ingresos).toFixed(
+        2
+      );
+      let rotacionActivosTotales = (ER.ingresos / totalActivos).toFixed(2);
+      let rsa = (margenUtilidadNeta * rotacionActivosTotales).toFixed(2); //rendimiento sobre activos totales
+      let maf = (totalActivos / balanceGral.accionesComunes).toFixed(2); //multiplicador de apalancamiento financiero
+      let rsp = (maf * rsa).toFixed(2); //rendimiento sobre patrimonio
+
       return {
         ER: {
           beneficioBruto,
@@ -178,7 +186,7 @@ new Vue({
           resultadoExplotacion,
           resultadoOrdinarioAntesImpuestos,
           resultadoOperacionesContinuadas,
-          resultadoAtribuidoGrupo,
+          resultadoAtribuidoGrupo
         },
 
         balanceGral: {
@@ -192,6 +200,14 @@ new Vue({
           totalPasivos,
           capitalContable,
           totalPasivoCapitalContable
+        },
+
+        razones: {
+          margenUtilidadNeta,
+          rotacionActivosTotales,
+          rsa,
+          maf,
+          rsp
         }
       };
     },
@@ -212,7 +228,8 @@ new Vue({
         ER.otrosGastos;
       let resultadoOperacionesContinuadas =
         resultadoOrdinarioAntesImpuestos - ER.impuestoBeneficios;
-      let resultadoAtribuidoGrupo = resultadoOperacionesContinuadas - ER.resultadoOperacionesInterrumpidas;
+      let resultadoAtribuidoGrupo =
+        resultadoOperacionesContinuadas - ER.resultadoOperacionesInterrumpidas;
 
       //calculos de balance general
       let balanceGral = this.year2.balanceGral;
@@ -256,6 +273,15 @@ new Vue({
       let totalActivosFijos = totalActivos - totalActivosCorrientes;
       let totalPasivosFijos = totalPasivos - totalPasivosCorrientes;
 
+      //calculos de razones financieras
+      let margenUtilidadNeta = (resultadoAtribuidoGrupo / ER.ingresos).toFixed(
+        2
+      );
+      let rotacionActivosTotales = (ER.ingresos / totalActivos).toFixed(2);
+      let rsa = (margenUtilidadNeta * rotacionActivosTotales).toFixed(2); //rendimiento sobre activos totales
+      let maf = (totalActivos / balanceGral.accionesComunes).toFixed(2); //multiplicador de apalancamiento financiero
+      let rsp = (maf * rsa).toFixed(2); //rendimiento sobre patrimonio
+
       return {
         ER: {
           beneficioBruto,
@@ -263,7 +289,7 @@ new Vue({
           resultadoExplotacion,
           resultadoOrdinarioAntesImpuestos,
           resultadoOperacionesContinuadas,
-          resultadoAtribuidoGrupo,
+          resultadoAtribuidoGrupo
         },
 
         balanceGral: {
@@ -277,8 +303,16 @@ new Vue({
           totalPasivos,
           capitalContable,
           totalPasivoCapitalContable
+        },
+
+        razones: {
+          margenUtilidadNeta,
+          rotacionActivosTotales,
+          rsa,
+          maf,
+          rsp
         }
       };
-    },
+    }
   }
 });
